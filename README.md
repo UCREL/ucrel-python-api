@@ -1,3 +1,3 @@
 # UCREL Python API
+> Python API to the <a href='http://ucrel-api.lancaster.ac.uk/'>UCREL Tool Chain.</a>
 
-Python API to the [UCREL Tool Chain.](http://ucrel-api.lancaster.ac.uk/)
