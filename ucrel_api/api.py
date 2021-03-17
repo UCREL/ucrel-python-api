@@ -64,7 +64,7 @@ class UCREL_API():
         1. **email**: Email address of the user. This is used to identify the user
         calling the UCREL Tool Chain API.
         2. **server_address**: The address of the UCREL Tool Chain e.g.
-        [http://ucrel-api.lancaster.ac.uk/](http://ucrel-api.lancaster.ac.uk/)
+        [http://ucrel-api.lancaster.ac.uk](http://ucrel-api.lancaster.ac.uk)
         3. **port**: The port to the server e.g. 8080. Can be left as empty string
         if port number is not required.
         4. **timeout**: The amount of time to allow each request to take before raising
@@ -77,21 +77,12 @@ class UCREL_API():
 
     def usas(self, text: str, tagset: str = 'c7') -> UCREL_Doc:
         '''
-        Might be a good idea to allow as a optional argument a
-        session object so that someone can keep a session going
-        over multiple calls and thus keep credientials over multiple
-        calls etc. Probably be best to do this way and have a method
-        in the future that will allow you to create a session that
-        has been authenticated.
-
-        Need to encode SGML entities before sending
-
-        This function returns the USAS tags for the given text.
-
         1. **text**: The text to be tagged by USAS.
         2. **tagset**: The tagset to be used by USAS. Either `c5` or `c7`.
 
-        **returns**
+        **returns**: A `UCREL_Doc` representing the text and the
+        lingustic attributes that are generared from tagging it
+        with [USAS.](http://ucrel.lancs.ac.uk/usas/)
         '''
         endpoint = '/cgi-bin/usas.pl'
         url = f'{self.server_address}{endpoint}'

@@ -60,6 +60,205 @@ nb_path: "module_notebooks/00_api.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="UCREL_API.__init__" class="doc_header"><code>UCREL_API.__init__</code><a href="__main__.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_API.__init__</code>(<strong><code>email</code></strong>:<code>str</code>, <strong><code>server_address</code></strong>:<code>str</code>, <strong><code>port</code></strong>:<code>str</code>=<em><code>''</code></em>, <strong><code>timeout</code></strong>:<code>int</code>=<em><code>60</code></em>)</p>
+</blockquote>
+<p>Creates a UCREL API instance that is used to call the UCREL Tool chain.</p>
+<ol>
+<li><strong>email</strong>: Email address of the user. This is used to identify the user 
+calling the UCREL Tool Chain API.</li>
+<li><strong>server_address</strong>: The address of the UCREL Tool Chain e.g. 
+<a href="http://ucrel-api.lancaster.ac.uk">http://ucrel-api.lancaster.ac.uk</a></li>
+<li><strong>port</strong>: The port to the server e.g. 8080. Can be left as empty string
+if port number is not required.</li>
+<li><strong>timeout</strong>: The amount of time to allow each request to take before raising 
+a <code>requests.exceptions.Timeout</code></li>
+</ol>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ucrel_api</span> <span class="o">=</span> <span class="n">UCREL_API</span><span class="p">(</span><span class="s1">&#39;a.moore@lancaster.ac.uk&#39;</span><span class="p">,</span> <span class="s1">&#39;http://ucrel-api.lancaster.ac.uk&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="UCREL_API.__repr__" class="doc_header"><code>UCREL_API.__repr__</code><a href="__main__.py#L134" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_API.__repr__</code>()</p>
+</blockquote>
+<p>String representation of the UCREL API instance, format:</p>
+<p>UCREL API, server address {self.server_address}, port {self.port}, timeout {self.timeout}</p>
+<p><code>, port {self.port}</code> -- will only exist in string if <code>self.port!=''</code></p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ucrel_api</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>UCREL API, server address http://ucrel-api.lancaster.ac.uk, timeout 60 seconds</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="UCREL_API.usas" class="doc_header"><code>UCREL_API.usas</code><a href="__main__.py#L74" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_API.usas</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>tagset</code></strong>:<code>str</code>=<em><code>'c7'</code></em>)</p>
+</blockquote>
+<ol>
+<li><strong>text</strong>: The text to be tagged by USAS.</li>
+<li><strong>tagset</strong>: The tagset to be used by USAS. Either <code>c5</code> or <code>c7</code>. </li>
+</ol>
+<p><strong>returns</strong>: A <a href="/ucrel-python-api/ucrel_doc.html#UCREL_Doc"><code>UCREL_Doc</code></a> representing the text and the 
+lingustic attributes that are generared from tagging it 
+with <a href="http://ucrel.lancs.ac.uk/usas/">USAS.</a></p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ucrel_doc</span> <span class="o">=</span> <span class="n">ucrel_api</span><span class="o">.</span><span class="n">usas</span><span class="p">((</span><span class="s1">&#39;Hope you have a nice day. &#39;</span>
+                            <span class="s1">&#39;Works with SGML entities e.g. 5 &gt; 4&#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ucrel_doc</span><span class="o">.</span><span class="n">sentences</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sentence </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Sentence 0
+UCREL Token: Hope	POS tag: VV0	USAS tag: X2.6+
+UCREL Token: you	POS tag: PPY	USAS tag: Z8mf
+UCREL Token: have	POS tag: VH0	USAS tag: A9+
+UCREL Token: a	POS tag: AT1	USAS tag: Z5
+UCREL Token: nice	POS tag: JJ	USAS tag: O4.2+
+UCREL Token: day	POS tag: NNT1	USAS tag: T1.3
+UCREL Token: .	POS tag: .
+
+
+Sentence 1
+UCREL Token: Works	POS tag: NN	USAS tag: I4/H1c
+UCREL Token: with	POS tag: IW	USAS tag: Z5
+UCREL Token: SGML	POS tag: NP1	USAS tag: Z99
+UCREL Token: entities	POS tag: NN2	USAS tag: O2
+UCREL Token: e.g.	POS tag: REX	USAS tag: A4.1
+UCREL Token: 5	POS tag: MC	USAS tag: N1
+UCREL Token: &gt;	POS tag: FO	USAS tag: Z99
+UCREL Token: 4	POS tag: MC	USAS tag: N1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 
