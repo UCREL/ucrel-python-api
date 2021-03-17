@@ -1,5 +1,8 @@
 {
   "ucrel_api": {
-    "Overview": "/"
+    "Overview": "/",
+    "API": "api.html",
+    "UCREL Token": "ucrel_token.html",
+    "UCREL Doc": "ucrel_doc.html"
   }
 }

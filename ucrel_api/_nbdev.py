@@ -2,9 +2,13 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"UCREL_API": "00_api.ipynb",
+         "UCREL_Token": "01_ucrel_token.ipynb",
+         "UCREL_Doc": "02_ucrel_doc.ipynb"}
 
-modules = []
+modules = ["api.py",
+           "ucrel_token.py",
+           "ucrel_doc.py"]
 
 doc_url = "https://UCREL.github.io/ucrel-python-api/"
 

@@ -9,6 +9,15 @@ entries:
     - output: web,pdf
       title: Overview
       url: /
+    - output: web,pdf
+      title: API
+      url: api.html
+    - output: web,pdf
+      title: UCREL Token
+      url: ucrel_token.html
+    - output: web,pdf
+      title: UCREL Doc
+      url: ucrel_doc.html
     output: web
     title: ucrel_api
   output: web

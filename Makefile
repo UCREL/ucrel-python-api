@@ -3,6 +3,7 @@ SHELL := /bin/bash
 SRC = $(wildcard ./*.ipynb)
 
 docker_docs_serve:
+	touch docs
 	nbdev_build_docs
 	cd docs
 	docker-compose up --build
