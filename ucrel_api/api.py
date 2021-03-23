@@ -4,6 +4,7 @@ __all__ = ['UCREL_API']
 
 # Cell
 
+import functools
 from typing import Optional, List, Tuple
 import re
 from xml.sax import saxutils
@@ -75,6 +76,55 @@ class UCREL_API():
         self.port = port
         self.timeout = timeout
 
+    def _ucrel_post_request(self, endpoint: str, text: str, **data_kwargs) -> str:
+        '''
+        1. **endpoint**: The POST endpoint of the UCREL Tool Chain sevrer
+        to call. The endpoint is expected to require `text` key in the
+        multipart form data.
+        2. **text**: The text to be processed by the given `endpoint`.
+        3. **data_kwargs**: Optional, additional `key: value` data to
+        be sent with the multipart form data.
+
+        **returns**: The string response from the UCREL Tool Chain
+        server after calling the given `endpoint` with the given `text`
+        and any `data_kwargs`.
+
+        **raises requests.exceptions.Timeout**: If the response from the POST request
+        takes longer than `self.timeout`.
+        **raises requests.exceptions.HTTPError**: If anything other than a status code 200
+        is returned from the `endpoint`.
+        **raises Exception**: If any error occurs while processing the POST request
+        to the `endpoint`.
+        '''
+        url = f'{self.server_address}{endpoint}'
+        if self.port:
+            url = f'{self.server_address}:{self.port}{endpoint}'
+        # Escape the SGML entities
+        text = text.strip()
+        escaped_text = self._sgml_entity_escape(text)
+        # Type here refers to the fact we want to use the REST API
+        # Style refers to the output type, in this case we use verticical
+        # as the verticial format returns the most output e.g. all possible tags
+        # and split into sentences.
+        data = {'type': 'rest', 'email': self.email,
+                'style': 'vert', **data_kwargs, 'text': escaped_text}
+        headers = {'Accept':'text/plain; charset=utf-8',
+                   'Content-Type': 'text/plain; charset=utf-8'}
+        try:
+            post_response =  requests.post(url, files=data, timeout=self.timeout,
+                                           headers=headers)
+            status_code = post_response.status_code
+            if post_response.status_code != 200:
+                error_msg = (f'Raised a status code of {status_code}. '
+                             'Can only accept code 200.')
+                raise requests.exceptions.HTTPError(error_msg)
+            return post_response.text
+        except requests.exceptions.Timeout:
+            error_message = (f'URL: {url}. Failed due to a timeout for the ')
+            raise requests.exceptions.Timeout(error_message)
+        except Exception as e:
+            raise type(e)(f'URL: {url}\nError: {str(e)}')
+
     def usas(self, text: str, tagset: str = 'c7') -> UCREL_Doc:
         '''
         1. **text**: The text to be tagged by USAS.
@@ -84,27 +134,11 @@ class UCREL_API():
         lingustic attributes that are generared from tagging it
         with [USAS.](http://ucrel.lancs.ac.uk/usas/)
         '''
-        endpoint = '/cgi-bin/usas.pl'
-        url = f'{self.server_address}{endpoint}'
-        if self.port:
-            url = f'{self.server_address}:{self.port}{endpoint}'
-        # Escape the SGML entities
-        text = text.strip()
-        escaped_text = self._sgml_entity_escape(text)
-
-        # Type here refers to the fact we want to use the REST API
-        # Style refers to the output type, in this case we use verticical
-        # as the verticial format returns the most output e.g. all possible tags
-        # and split into sentences.
-        data = {'type': 'rest', 'email': self.email,
-                'tagset': tagset, 'style': 'vert', 'text': escaped_text}
-        headers = {'Accept':'text/plain; charset=utf-8',
-                   'Content-Type': 'text/plain; charset=utf-8'}
-        post_response =  requests.post(url, files=data, timeout=self.timeout,
-                                       headers=headers)
-        usas_data = post_response.text
-
+        # Call USAS endpoint.
+        usas_endpoint = '/cgi-bin/usas.pl'
+        usas_data = self._ucrel_post_request(usas_endpoint, text, tagset=tagset)
         ucrel_tokens: List[UCREL_Token] = []
+
         sentence_indexes: List[Tuple[int, int]] = []
         token_index = 0
         last_sentence_index = 0
