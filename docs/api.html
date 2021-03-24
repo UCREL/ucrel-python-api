@@ -123,7 +123,7 @@ a <code>requests.exceptions.Timeout</code></li>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_API.__repr__" class="doc_header"><code>UCREL_API.__repr__</code><a href="__main__.py#L168" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_API.__repr__</code>()</p>
+<h4 id="UCREL_API.__repr__" class="doc_header"><code>UCREL_API.__repr__</code><a href="__main__.py#L185" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_API.__repr__</code>()</p>
 </blockquote>
 <p>String representation of the UCREL API instance, format:</p>
 <p>UCREL API, server address {self.server_address}, port {self.port}, timeout {self.timeout}</p>
@@ -211,12 +211,13 @@ with <a href="http://ucrel.lancs.ac.uk/usas/">USAS.</a></p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ucrel_doc</span> <span class="o">=</span> <span class="n">ucrel_api</span><span class="o">.</span><span class="n">usas</span><span class="p">((</span><span class="s1">&#39;Hope you have a nice day. &#39;</span>
-                            <span class="s1">&#39;Works with SGML entities e.g. 5 &gt; 4&#39;</span><span class="p">))</span>
+                            <span class="s1">&#39;Works with SGML entities e.g. 5 &gt; 4.&#39;</span>
+                            <span class="s1">&#39;Also with MWE like New York.&#39;</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ucrel_doc</span><span class="o">.</span><span class="n">sentences</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sentence </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -231,24 +232,35 @@ with <a href="http://ucrel.lancs.ac.uk/usas/">USAS.</a></p>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Sentence 0
-UCREL Token: Hope	POS tag: VV0	USAS tag: X2.6+
-UCREL Token: you	POS tag: PPY	USAS tag: Z8mf
-UCREL Token: have	POS tag: VH0	USAS tag: A9+
-UCREL Token: a	POS tag: AT1	USAS tag: Z5
-UCREL Token: nice	POS tag: JJ	USAS tag: O4.2+
-UCREL Token: day	POS tag: NNT1	USAS tag: T1.3
-UCREL Token: .	POS tag: .
+UCREL Token: Hope	Lemma: hope	POS tag: VV0	USAS tag: X2.6+
+UCREL Token: you	Lemma: you	POS tag: PPY	USAS tag: Z8mf
+UCREL Token: have	Lemma: have	POS tag: VH0	USAS tag: A9+
+UCREL Token: a	Lemma: a	POS tag: AT1	USAS tag: Z5
+UCREL Token: nice	Lemma: nice	POS tag: JJ	USAS tag: O4.2+
+UCREL Token: day	Lemma: day	POS tag: NNT1	USAS tag: T1.3
+UCREL Token: .	Lemma: PUNC	POS tag: .
 
 
 Sentence 1
-UCREL Token: Works	POS tag: NN	USAS tag: I4/H1c
-UCREL Token: with	POS tag: IW	USAS tag: Z5
-UCREL Token: SGML	POS tag: NP1	USAS tag: Z99
-UCREL Token: entities	POS tag: NN2	USAS tag: O2
-UCREL Token: e.g.	POS tag: REX	USAS tag: A4.1
-UCREL Token: 5	POS tag: MC	USAS tag: N1
-UCREL Token: &gt;	POS tag: FO	USAS tag: Z99
-UCREL Token: 4	POS tag: MC	USAS tag: N1
+UCREL Token: Works	Lemma: works	POS tag: NN	USAS tag: I4/H1c
+UCREL Token: with	Lemma: with	POS tag: IW	USAS tag: Z5
+UCREL Token: SGML	Lemma: sgml	POS tag: NP1	USAS tag: Z99
+UCREL Token: entities	Lemma: entity	POS tag: NN2	USAS tag: O2
+UCREL Token: e.g.	Lemma: e.g.	POS tag: REX	USAS tag: A4.1
+UCREL Token: 5	Lemma: 5	POS tag: MC	USAS tag: N1
+UCREL Token: &gt;	Lemma: &gt;	POS tag: FO	USAS tag: Z99
+UCREL Token: 4	Lemma: 4	POS tag: MC	USAS tag: N1
+UCREL Token: .	Lemma: PUNC	POS tag: .
+
+
+Sentence 2
+UCREL Token: Also	Lemma: also	POS tag: RR	USAS tag: N5++
+UCREL Token: with	Lemma: with	POS tag: IW	USAS tag: Z5
+UCREL Token: MWE	Lemma: mwe	POS tag: NP1	USAS tag: Z99
+UCREL Token: like	Lemma: like	POS tag: II	USAS tag: Z5
+UCREL Token: New	Lemma: new	POS tag: NP1	USAS tag: Z2	MWE tag: 2.2.1
+UCREL Token: York	Lemma: york	POS tag: NP1	USAS tag: Z2	MWE tag: 2.2.2
+UCREL Token: .	Lemma: PUNC	POS tag: .
 </pre>
 </div>
 </div>
@@ -259,6 +271,13 @@ UCREL Token: 4	POS tag: MC	USAS tag: N1
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Note</strong> that even though <code>New York</code> is the first <code>MWE</code> identified as shown above, it has the <code>MWE tag</code>: <code>2.2.1</code> and <code>2.2.2</code> suggesting that there has been a MWE previously due to the first number in the tag being <code>2</code>. Actually the USAS, POS, and MWE tags shown above are the most likely tags and other less probable tags are generated for each token, but they are not shown here as we only output the most probable tag for each token.</p>
+
+</div>
+</div>
+</div>
 </div>
  
 

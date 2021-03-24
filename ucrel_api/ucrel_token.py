@@ -13,30 +13,45 @@ class UCREL_Token():
     This class is inspired by the [Token](https://spacy.io/api/token)
     class from the [SpaCy API.](https://spacy.io/api)
     '''
-    def __init__(self, text: str, pos_tag: Optional[str] = None,
-                 usas_tag: Optional[str] = None) -> None:
+    def __init__(self, text: str, lemma: Optional[str] = None,
+                 pos_tag: Optional[str] = None,
+                 usas_tag: Optional[str] = None,
+                 mwe_tag: Optional[str] = None) -> None:
         '''
         1. **text**: Text of the token.
+        2. **lemma**: Lemma of the token.
         2. **pos_tag**: POS tag of the token.
         3. **usas_tag**: USAS tag of the token.
+        4. **mwe_tag**: Multi Word Expression (MWE) tag. This is in the form of
+        `Unique ID. Length of MWE. Position in MWE` e.g `2.2.1`
+        would mean that the token is in the second unique
+        MWE within it's context, the length of the MWE is 2,
+        and this is the first token in this MWT.
         '''
         self.text = text
+        self.lemma = lemma
         self.pos_tag = pos_tag
         self.usas_tag = usas_tag
+        self.mwe_tag = mwe_tag
 
     def __repr__(self) -> str:
         '''
         String representation of the UCREL Token instance, format:
 
-        UCREL Token: {self.text}\tPOS tag: {self.pos_tag}\tUSAS tag: {self.usas_tag}
+        UCREL Token: {self.text}\tLemma: {self.lemma}\tPOS tag: {self.pos_tag}\t
+        USAS tag: {self.usas_tag}\tMWE tag: {self.mwe_tag}
 
-        The POS and USAS tags will only appear if they are not `None`.
+        The Lemma, POS, USAS, MWE tags will only appear if they are not `None`.
         '''
         base_repr = f'UCREL Token: {self.text}'
+        if self.lemma is not None:
+            base_repr += f'\tLemma: {self.lemma}'
         if self.pos_tag is not None:
             base_repr += f'\tPOS tag: {self.pos_tag}'
         if self.usas_tag is not None:
             base_repr += f'\tUSAS tag: {self.usas_tag}'
+        if self.mwe_tag is not None:
+            base_repr += f'\tMWE tag: {self.mwe_tag}'
         return base_repr
 
     def __eq__(self, other: Any) -> bool:
@@ -48,7 +63,7 @@ class UCREL_Token():
         class type it will raise a `NotImplementedError`.
 
         **returns** `True` if the two instances are the same based on
-        the tokens attributes.
+        the token attributes.
 
         **raises NotImplementedError**: If the `other` instance is not of
         the same class type as `self`.
@@ -65,8 +80,12 @@ class UCREL_Token():
 
         if self.text != other.text:
             return False
+        if self.lemma != other.lemma:
+            return False
         if self.pos_tag != other.pos_tag:
             return False
         if self.usas_tag != other.usas_tag:
+            return False
+        if self.mwe_tag != other.mwe_tag:
             return False
         return True

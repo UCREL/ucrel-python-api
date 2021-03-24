@@ -107,12 +107,12 @@ class UCREL_API():
         # as the verticial format returns the most output e.g. all possible tags
         # and split into sentences.
         data = {'type': 'rest', 'email': self.email,
-                'style': 'vert', **data_kwargs, 'text': escaped_text}
+                **data_kwargs, 'style': 'tab',  'text': escaped_text}
         headers = {'Accept':'text/plain; charset=utf-8',
                    'Content-Type': 'text/plain; charset=utf-8'}
         try:
-            post_response =  requests.post(url, files=data, timeout=self.timeout,
-                                           headers=headers)
+            post_response = requests.post(url, files=data, timeout=self.timeout,
+                                          headers=headers)
             status_code = post_response.status_code
             if post_response.status_code != 200:
                 error_msg = (f'Raised a status code of {status_code}. '
@@ -137,36 +137,53 @@ class UCREL_API():
         # Call USAS endpoint.
         usas_endpoint = '/cgi-bin/usas.pl'
         usas_data = self._ucrel_post_request(usas_endpoint, text, tagset=tagset)
+        usas_data = usas_data.strip()
+        if not usas_data:
+            return UCREL_Doc(text, tokens=[], sentence_indexes=[])
+
         ucrel_tokens: List[UCREL_Token] = []
 
         sentence_indexes: List[Tuple[int, int]] = []
         token_index = 0
         last_sentence_index = 0
-        for token_line in usas_data.strip().split('\n'):
-            usas_output_data = token_line.split()
-            # If length is less than 4 it is normally the end of
-            # the output
-            if len(usas_output_data) < 4:
+
+
+
+        for sentence in usas_data.split('<s>'):
+            sentence = sentence.strip().rstrip('</s>')
+            if not sentence:
                 continue
-            ref_num, decision_id, pos_tag, token_text = usas_output_data[:4]
-            # Check if the token is a sentence break
-            if re.match(r'^-+$', token_text):
-                if token_index != 0:
-                    sentence_indexes.append((last_sentence_index, token_index))
-                    last_sentence_index = token_index
-                continue
-            # un-escape token text from SGML entities
-            token_text = self._sgml_entity_un_escape(token_text)
-            # Check to see if USAS tag(s) exist
-            if len(usas_output_data) == 4:
-                ucrel_token = UCREL_Token(token_text, pos_tag)
-            else:
-                usas_tags = usas_output_data[4:]
-                ucrel_token = UCREL_Token(token_text, pos_tag, usas_tags[0])
-            token_index += 1
-            ucrel_tokens.append(ucrel_token)
-        if last_sentence_index != token_index:
+            for token_values in sentence.split('\n'):
+                token_values = token_values.strip()
+                if not token_values:
+                    continue
+
+                token_values = token_values.split('\t')
+                token_text, pos_tag, lemma, usas_tags = None, None, None, None
+                # Punctuation does not get tagged with USAS tags.
+                if len(token_values) == 3:
+                    token_text, pos_tag, lemma = token_values
+                else:
+                    token_text, pos_tag, lemma, usas_tags = token_values
+                token_text = self._sgml_entity_un_escape(token_text)
+                lemma = self._sgml_entity_un_escape(lemma)
+                usas_tag = None
+                mwe_tag = None
+                if usas_tags is not None:
+                    # Most likely USAS tag
+                    usas_tag = usas_tags.split()[0]
+                    # Get the MWE tag
+                    usas_and_mwe = usas_tag.split('[i')
+                    if len(usas_and_mwe) == 2:
+                        usas_tag, mwe_tag = usas_and_mwe
+
+                ucrel_tokens.append(UCREL_Token(token_text, lemma=lemma,
+                                                pos_tag=pos_tag,
+                                                usas_tag=usas_tag, mwe_tag=mwe_tag))
+                token_index += 1
             sentence_indexes.append((last_sentence_index, token_index))
+            last_sentence_index = token_index
+
         return UCREL_Doc(text, tokens=ucrel_tokens, sentence_indexes=sentence_indexes)
 
     def __repr__(self) -> str:

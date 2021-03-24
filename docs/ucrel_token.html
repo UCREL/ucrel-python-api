@@ -40,7 +40,7 @@ nb_path: "module_notebooks/01_ucrel_token.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="UCREL_Token" class="doc_header"><code>class</code> <code>UCREL_Token</code><a href="https://github.com/UCREL/ucrel-python-api/tree/main/ucrel_api/ucrel_token.py#L8" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>UCREL_Token</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>pos_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>usas_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>)</p>
+<h2 id="UCREL_Token" class="doc_header"><code>class</code> <code>UCREL_Token</code><a href="https://github.com/UCREL/ucrel-python-api/tree/main/ucrel_api/ucrel_token.py#L8" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>UCREL_Token</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>lemma</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>pos_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>usas_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>mwe_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Classs that holds token level lingustic information and the text
 of the token.</p>
@@ -75,12 +75,18 @@ class from the <a href="https://spacy.io/api">SpaCy API.</a></p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Token.__init__" class="doc_header"><code>UCREL_Token.__init__</code><a href="__main__.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__init__</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>pos_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>usas_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>)</p>
+<h4 id="UCREL_Token.__init__" class="doc_header"><code>UCREL_Token.__init__</code><a href="__main__.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__init__</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>lemma</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>pos_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>usas_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>mwe_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>)</p>
 </blockquote>
 <ol>
 <li><strong>text</strong>: Text of the token.</li>
+<li><strong>lemma</strong>: Lemma of the token.</li>
 <li><strong>pos_tag</strong>: POS tag of the token.</li>
 <li><strong>usas_tag</strong>: USAS tag of the token.</li>
+<li><strong>mwe_tag</strong>: Multi Word Expression (MWE) tag. This is in the form of
+<code>Unique ID. Length of MWE. Position in MWE</code> e.g <code>2.2.1</code> 
+would mean that the token is in the second unique 
+MWE within it's context, the length of the MWE is 2, 
+and this is the first token in this MWT.</li>
 </ol>
 
 </div>
@@ -100,7 +106,7 @@ class from the <a href="https://spacy.io/api">SpaCy API.</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">great_token</span> <span class="o">=</span> <span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="s1">&#39;A5.1+&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">great_token</span> <span class="o">=</span> <span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="s1">&#39;A5.1+&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1.1&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -121,7 +127,7 @@ class from the <a href="https://spacy.io/api">SpaCy API.</a></p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Token.__eq__" class="doc_header"><code>UCREL_Token.__eq__</code><a href="__main__.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__eq__</code>(<strong><code>other</code></strong>:<code>Any</code>)</p>
+<h4 id="UCREL_Token.__eq__" class="doc_header"><code>UCREL_Token.__eq__</code><a href="__main__.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__eq__</code>(<strong><code>other</code></strong>:<code>Any</code>)</p>
 </blockquote>
 <p>Compare another instance with the current instance of this
 class.</p>
@@ -130,7 +136,7 @@ class.</p>
 class type it will raise a <code>NotImplementedError</code>.</li>
 </ol>
 <p><strong>returns</strong> <code>True</code> if the two instances are the same based on 
-the tokens attributes.</p>
+the token attributes.</p>
 <p><strong>raises NotImplementedError</strong>: If the <code>other</code> instance is not of 
 the same class type as <code>self</code>.</p>
 
@@ -151,10 +157,10 @@ the same class type as <code>self</code>.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">great_token</span> <span class="o">=</span> <span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="s1">&#39;A5.1+&#39;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">great_token</span> <span class="o">==</span> <span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="s1">&#39;A5.1+&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">great_token</span> <span class="o">=</span> <span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="s1">&#39;A5.1+&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1.1&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">great_token</span> <span class="o">==</span> <span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="s1">&#39;A5.1+&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1.1&#39;</span><span class="p">)</span>
 
-<span class="n">great_without_usas</span> <span class="o">=</span> <span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">)</span>
+<span class="n">great_without_usas</span> <span class="o">=</span> <span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="n">mwe_tag</span><span class="o">=</span><span class="s1">&#39;1.1.1&#39;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">great_token</span> <span class="o">!=</span> <span class="n">great_without_usas</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -196,11 +202,12 @@ the same class type as <code>self</code>.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Token.__repr__" class="doc_header"><code>UCREL_Token.__repr__</code><a href="__main__.py#L23" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__repr__</code>()</p>
+<h4 id="UCREL_Token.__repr__" class="doc_header"><code>UCREL_Token.__repr__</code><a href="__main__.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__repr__</code>()</p>
 </blockquote>
 <p>String representation of the UCREL Token instance, format:</p>
-<p>UCREL Token: {self.text}        POS tag: {self.pos_tag} USAS tag: {self.usas_tag}</p>
-<p>The POS and USAS tags will only appear if they are not <code>None</code>.</p>
+<p>UCREL Token: {self.text}        Lemma: {self.lemma}     POS tag: {self.pos_tag} 
+USAS tag: {self.usas_tag}       MWE tag: {self.mwe_tag}</p>
+<p>The Lemma, POS, USAS, MWE tags will only appear if they are not <code>None</code>.</p>
 
 </div>
 
@@ -219,7 +226,7 @@ the same class type as <code>self</code>.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="s1">&#39;A5.1+&#39;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">UCREL_Token</span><span class="p">(</span><span class="s1">&#39;Great&#39;</span><span class="p">,</span> <span class="s1">&#39;great&#39;</span><span class="p">,</span> <span class="s1">&#39;JJ&#39;</span><span class="p">,</span> <span class="s1">&#39;A5.1+&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1.1&#39;</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -232,7 +239,7 @@ the same class type as <code>self</code>.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>UCREL Token: Great	POS tag: JJ	USAS tag: A5.1+
+<pre>UCREL Token: Great	Lemma: great	POS tag: JJ	USAS tag: A5.1+	MWE tag: 1.1.1
 </pre>
 </div>
 </div>
