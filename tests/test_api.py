@@ -11,6 +11,11 @@ from ucrel_api.ucrel_token import UCREL_Token
 from ucrel_api.api import UCREL_API
 
 
+def test_requests() -> None:
+    import json
+    r = requests.post('https://httpbin.org/post', data = {'key':'value'})
+    assert r.json()['form']['key'] == 'value'
+
 def test_ucrel_api_repr() -> None:
     base_parameters = {'email':'test@example.com', 'server_address':'127.0.0.1'}
     
