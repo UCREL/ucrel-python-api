@@ -12,9 +12,13 @@ from ucrel_api.api import UCREL_API
 
 
 def test_requests() -> None:
-    import json
-    r = requests.post('http://httpbin.org/post', data = {'key':'value'})
-    assert r.json()['form']['key'] == 'value'
+    test_api = UCREL_API(email='a.moore@lancaster.ac.uk', 
+                         server_address='http://ucrel-api.lancaster.ac.uk')
+    # One sentence and token
+    value = test_api.usas('hello')
+    _doc = UCREL_Doc('hello', tokens=[DOC_TOKENS[0]], 
+                     sentence_indexes=[(0,1)])
+    assert value == _doc
 
 def test_ucrel_api_repr() -> None:
     base_parameters = {'email':'test@example.com', 'server_address':'127.0.0.1'}
