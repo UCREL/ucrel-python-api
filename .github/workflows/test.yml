@@ -32,7 +32,7 @@ jobs:
         if [ -n "$(git status -uno -s)" ]; then echo -e "!!! Detected unstripped out notebooks\n!!!Remember to run nbdev_install_git_hooks"; false; fi
     - name: Test internet connection
       run: |
-        ping -c 5 ucrel-api.lancaster.ac.uk/
+        ping -c 5 ucrel-api.lancaster.ac.uk
     - name: Run tests
       run: |
         make test
