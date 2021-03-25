@@ -30,6 +30,10 @@ jobs:
         echo "Check that strip out was unnecessary"
         git status -s # display the status to see which nbs need cleaning up
         if [ -n "$(git status -uno -s)" ]; then echo -e "!!! Detected unstripped out notebooks\n!!!Remember to run nbdev_install_git_hooks"; false; fi
+    - name: Test internet connection
+      run: |
+        ping -c 5 www.google.com
+        ping -c 5 http://ucrel-api.lancaster.ac.uk/
     - name: Run tests
       run: |
         make test
