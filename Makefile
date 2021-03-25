@@ -10,7 +10,7 @@ docker_docs_serve:
 	docker-compose down
 
 test:
-	python -m pytest --cov=ucrel_api --cov-report term-missing --cov-report xml --cov-config .coveragerc
+	python -m pytest -vv --cov=ucrel_api --cov-report term-missing --cov-report xml --cov-config .coveragerc
 
 release: clean
 	python setup.py sdist bdist_wheel
