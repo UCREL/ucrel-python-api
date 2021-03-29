@@ -64,3 +64,6 @@ plugins:
     
 remote_theme: fastai/nbdev-jekyll-theme
 baseurl: /ucrel-python-api/
+
+default_badges:
+  colab: true
