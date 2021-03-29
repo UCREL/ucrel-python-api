@@ -3,6 +3,11 @@
 
 
 <p align="center">
+    <a href="https://colab.research.google.com/github/UCREL/ucrel-python-api/blob/main/module_notebooks/index.ipynb" target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+    </a>
+</p>
+<p align="center">
     <a href="https://github.com/UCREL/ucrel-python-api/blob/main/LICENSE"> <img alt="License" src="https://img.shields.io/github/license/ucrel/ucrel-python-api?color=orange"></a>
 </p>
 
@@ -14,6 +19,12 @@
 ## Install
 
 `pip install ucrel_api`
+
+```python
+%%capture
+# If you are running this in Google Colab:
+! pip install ucrel_api
+```
 
 ## Examples
 
