@@ -2,6 +2,15 @@
 > Python API to the <a href='http://ucrel-api.lancaster.ac.uk/'>UCREL Tool Chain.</a>
 
 
+<p align="center">
+    <a href="https://github.com/UCREL/ucrel-python-api/blob/main/LICENSE"> <img alt="License" src="https://img.shields.io/github/license/ucrel/ucrel-python-api"></a>
+</p>
+
+<p align="center">
+    <a href="https://pypi.org/project/ucrel_api/"> <img alt="PyPi" src="https://img.shields.io/pypi/v/ucrel_api"> </a>
+    <a href="https://pypi.org/project/ucrel_api/"> <img alt="Supported Python Versions" src="https://img.shields.io/pypi/pyversions/ucrel_api"> </a>
+</p>
+
 ## Install
 
 `pip install ucrel_api`
