@@ -3,7 +3,7 @@
 
 
 <p align="center">
-    <a href="https://github.com/UCREL/ucrel-python-api/blob/main/LICENSE"> <img alt="License" src="https://img.shields.io/github/license/ucrel/ucrel-python-api"></a>
+    <a href="https://github.com/UCREL/ucrel-python-api/blob/main/LICENSE"> <img alt="License" src="https://img.shields.io/github/license/ucrel/ucrel-python-api?color=orange"></a>
 </p>
 
 <p align="center">
