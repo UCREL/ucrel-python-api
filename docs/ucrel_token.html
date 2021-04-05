@@ -40,7 +40,7 @@ nb_path: "module_notebooks/01_ucrel_token.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="UCREL_Token" class="doc_header"><code>class</code> <code>UCREL_Token</code><a href="https://github.com/UCREL/ucrel-python-api/tree/main/ucrel_api/ucrel_token.py#L8" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>UCREL_Token</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>lemma</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>pos_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>usas_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>mwe_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>)</p>
+<h2 id="UCREL_Token" class="doc_header"><code>class</code> <code>UCREL_Token</code><a href="https://github.com/UCREL/ucrel-python-api/tree/main/ucrel_api/ucrel_token.py#L9" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>UCREL_Token</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>lemma</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>pos_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>usas_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>mwe_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Classs that holds token level lingustic information and the text
 of the token.</p>
@@ -75,7 +75,7 @@ class from the <a href="https://spacy.io/api">SpaCy API.</a></p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Token.__init__" class="doc_header"><code>UCREL_Token.__init__</code><a href="__main__.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__init__</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>lemma</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>pos_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>usas_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>mwe_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>)</p>
+<h4 id="UCREL_Token.__init__" class="doc_header"><code>UCREL_Token.__init__</code><a href="__main__.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__init__</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>lemma</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>pos_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>usas_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong><code>mwe_tag</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>)</p>
 </blockquote>
 <ol>
 <li><strong>text</strong>: Text of the token.</li>
@@ -127,7 +127,7 @@ and this is the first token in this MWT.</li>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Token.__eq__" class="doc_header"><code>UCREL_Token.__eq__</code><a href="__main__.py#L53" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__eq__</code>(<strong><code>other</code></strong>:<code>Any</code>)</p>
+<h4 id="UCREL_Token.__eq__" class="doc_header"><code>UCREL_Token.__eq__</code><a href="__main__.py#L54" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__eq__</code>(<strong><code>other</code></strong>:<code>Any</code>)</p>
 </blockquote>
 <p>Compare another instance with the current instance of this
 class.</p>
@@ -202,7 +202,7 @@ the same class type as <code>self</code>.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Token.__repr__" class="doc_header"><code>UCREL_Token.__repr__</code><a href="__main__.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__repr__</code>()</p>
+<h4 id="UCREL_Token.__repr__" class="doc_header"><code>UCREL_Token.__repr__</code><a href="__main__.py#L34" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.__repr__</code>()</p>
 </blockquote>
 <p>String representation of the UCREL Token instance, format:</p>
 <p>UCREL Token: {self.text}        Lemma: {self.lemma}     POS tag: {self.pos_tag} 
@@ -242,6 +242,170 @@ USAS tag: {self.usas_tag}       MWE tag: {self.mwe_tag}</p>
 <pre>UCREL Token: Great	Lemma: great	POS tag: JJ	USAS tag: A5.1+	MWE tag: 1.1.1
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="UCREL_Token.to_json" class="doc_header"><code>UCREL_Token.to_json</code><a href="__main__.py#L90" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.to_json</code>()</p>
+</blockquote>
+<p><strong>returns</strong> This UCREL_Token as a JSON String.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">great_token</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;text&#34;: &#34;Great&#34;, &#34;lemma&#34;: &#34;great&#34;, &#34;pos_tag&#34;: &#34;JJ&#34;, &#34;usas_tag&#34;: &#34;A5.1+&#34;, &#34;mwe_tag&#34;: &#34;1.1.1&#34;}&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Static-Methods">Static Methods<a class="anchor-link" href="#Static-Methods"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="UCREL_Token.from_json" class="doc_header"><code>UCREL_Token.from_json</code><a href="__main__.py#L96" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Token.from_json</code>(<strong><code>json_string</code></strong>:<code>str</code>)</p>
+</blockquote>
+<p>A static method that given a <code>json_string</code> will 
+return a <a href="/ucrel-python-api/ucrel_token.html#UCREL_Token"><code>UCREL_Token</code></a> representation of that string.</p>
+<ol>
+<li><strong>json_string</strong>: A string that is the return of 
+<a href="/ucrel-python-api/ucrel_token.html#UCREL_Token.to_json"><code>UCREL_Token.to_json</code></a> method</li>
+</ol>
+<p><strong>returns</strong> The given <code>json_string</code> represented through the 
+<a href="/ucrel-python-api/ucrel_token.html#UCREL_Token"><code>UCREL_Token</code></a>.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">great_token_json_string</span> <span class="o">=</span> <span class="n">great_token</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+<span class="n">another_great_token</span> <span class="o">=</span> <span class="n">UCREL_Token</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">great_token_json_string</span><span class="p">)</span>
+<span class="n">another_great_token</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>UCREL Token: Great	Lemma: great	POS tag: JJ	USAS tag: A5.1+	MWE tag: 1.1.1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">great_token</span> <span class="o">==</span> <span class="n">another_great_token</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
 </div>
 
 </div>

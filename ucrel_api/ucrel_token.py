@@ -3,6 +3,7 @@
 __all__ = ['UCREL_Token']
 
 # Cell
+import json
 from typing import Optional, Any
 
 class UCREL_Token():
@@ -89,3 +90,24 @@ class UCREL_Token():
         if self.mwe_tag != other.mwe_tag:
             return False
         return True
+
+    def to_json(self) -> str:
+        '''
+        **returns** This UCREL_Token as a JSON String.
+        '''
+        return json.dumps(self.__dict__)
+
+    @staticmethod
+    def from_json(json_string: str) -> 'UCREL_Token':
+        '''
+        A static method that given a `json_string` will
+        return a `UCREL_Token` representation of that string.
+
+        1. **json_string**: A string that is the return of
+        `UCREL_Token.to_json` method
+
+        **returns** The given `json_string` represented through the
+        `UCREL_Token`.
+        '''
+
+        return UCREL_Token(**json.loads(json_string))
