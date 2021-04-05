@@ -5,6 +5,7 @@ __all__ = ['UCREL_Doc']
 # Cell
 
 from collections import abc
+import json
 from typing import List, Tuple, Optional, Iterable, Any
 
 from .ucrel_token import UCREL_Token
@@ -125,3 +126,53 @@ class UCREL_Doc(abc.Iterable, abc.Sized):
             raise ValueError(error_msg)
         for start_index, end_index in self._sentence_indexes:
             yield self.tokens[start_index:end_index]
+
+    def to_json(self) -> str:
+        '''
+        **returns** This UCREL_Doc as a JSON String.
+        '''
+        text_json = json.dumps(self.text)
+        sentence_indexes_json = json.dumps(self._sentence_indexes)
+
+        token_json = '['
+        for token in self.tokens:
+            token_json += f'{token.to_json()}, '
+        token_json = token_json.rstrip(', ')
+        token_json += ']'
+
+        json_string = ('{"text": ' + text_json + ', "tokens": ' + token_json +
+                       ', "sentence_indexes": '+ sentence_indexes_json + '}')
+        return json_string
+
+    @staticmethod
+    def from_json(json_string: str) -> 'UCREL_Doc':
+        '''
+        A static method that given a `json_string` will
+        return a `UCREL_Doc` representation of that string.
+
+        1. **json_string**: A string that is the return of
+        `UCREL_Doc.to_json` method
+
+        **returns** The given `json_string` represented through the
+        `UCREL_Doc`.
+        '''
+
+        json_ucrel_doc = json.loads(json_string)
+
+        # Convert Sentence Indexes from a List of List objects into
+        # a List of Tuples
+        sentence_indexes = []
+        json_sentence_indexes = json_ucrel_doc['sentence_indexes']
+        if json_sentence_indexes is not None:
+            for index in json_sentence_indexes:
+                sentence_indexes.append(tuple(index))
+        sentence_indexes = sentence_indexes if sentence_indexes else None
+        json_ucrel_doc['sentence_indexes'] = sentence_indexes
+
+        # Convert the Tokens from a Dict object into UCREL_Token object
+        ucrel_tokens = []
+        for token in json_ucrel_doc['tokens']:
+            ucrel_tokens.append(UCREL_Token(**token))
+        json_ucrel_doc['tokens'] = ucrel_tokens
+
+        return UCREL_Doc(**json_ucrel_doc)

@@ -40,7 +40,7 @@ nb_path: "module_notebooks/02_ucrel_doc.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="UCREL_Doc" class="doc_header"><code>class</code> <code>UCREL_Doc</code><a href="https://github.com/UCREL/ucrel-python-api/tree/main/ucrel_api/ucrel_doc.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>UCREL_Doc</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>tokens</code></strong>:<code>List</code>[<a href="/ucrel-python-api/ucrel_token.html#UCREL_Token"><code>UCREL_Token</code></a>], <strong><code>sentence_indexes</code></strong>:<code>Optional</code>[<code>List</code>[<code>Tuple</code>[<code>int</code>, <code>int</code>]]]=<em><code>None</code></em>) :: <code>Iterable</code></p>
+<h2 id="UCREL_Doc" class="doc_header"><code>class</code> <code>UCREL_Doc</code><a href="https://github.com/UCREL/ucrel-python-api/tree/main/ucrel_api/ucrel_doc.py#L13" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>UCREL_Doc</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>tokens</code></strong>:<code>List</code>[<a href="/ucrel-python-api/ucrel_token.html#UCREL_Token"><code>UCREL_Token</code></a>], <strong><code>sentence_indexes</code></strong>:<code>Optional</code>[<code>List</code>[<code>Tuple</code>[<code>int</code>, <code>int</code>]]]=<em><code>None</code></em>) :: <code>Iterable</code></p>
 </blockquote>
 <p>Classs that holds text level lingustic information which is stored as
 a list of <a href="/ucrel-python-api/ucrel_token.html#UCREL_Token"><code>UCREL_Token</code></a>s. A text here can be anything from one word
@@ -79,7 +79,7 @@ and <a href="https://docs.python.org/3/library/collections.abc.html#collections.
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Doc.__init__" class="doc_header"><code>UCREL_Doc.__init__</code><a href="__main__.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__init__</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>tokens</code></strong>:<code>List</code>[<a href="/ucrel-python-api/ucrel_token.html#UCREL_Token"><code>UCREL_Token</code></a>], <strong><code>sentence_indexes</code></strong>:<code>Optional</code>[<code>List</code>[<code>Tuple</code>[<code>int</code>, <code>int</code>]]]=<em><code>None</code></em>)</p>
+<h4 id="UCREL_Doc.__init__" class="doc_header"><code>UCREL_Doc.__init__</code><a href="__main__.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__init__</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>tokens</code></strong>:<code>List</code>[<a href="/ucrel-python-api/ucrel_token.html#UCREL_Token"><code>UCREL_Token</code></a>], <strong><code>sentence_indexes</code></strong>:<code>Optional</code>[<code>List</code>[<code>Tuple</code>[<code>int</code>, <code>int</code>]]]=<em><code>None</code></em>)</p>
 </blockquote>
 <ol>
 <li><strong>text</strong>: The text the Doc is representing.</li>
@@ -139,7 +139,7 @@ create the <code>sentences</code> property. Can be accessed through
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Doc.__repr__" class="doc_header"><code>UCREL_Doc.__repr__</code><a href="__main__.py#L37" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__repr__</code>()</p>
+<h4 id="UCREL_Doc.__repr__" class="doc_header"><code>UCREL_Doc.__repr__</code><a href="__main__.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__repr__</code>()</p>
 </blockquote>
 <p>String representation of the UCREL Doc instance:</p>
 
@@ -276,7 +276,7 @@ UCREL Token: .	Lemma: .
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Doc.__iter__" class="doc_header"><code>UCREL_Doc.__iter__</code><a href="__main__.py#L50" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__iter__</code>()</p>
+<h4 id="UCREL_Doc.__iter__" class="doc_header"><code>UCREL_Doc.__iter__</code><a href="__main__.py#L51" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__iter__</code>()</p>
 </blockquote>
 <p><strong>returns</strong>: Yields each token in <code>self.tokens</code>.</p>
 
@@ -342,7 +342,7 @@ UCREL Token: .	Lemma: .
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Doc.__getitem__" class="doc_header"><code>UCREL_Doc.__getitem__</code><a href="__main__.py#L63" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__getitem__</code>(<strong><code>index</code></strong>:<code>int</code>)</p>
+<h4 id="UCREL_Doc.__getitem__" class="doc_header"><code>UCREL_Doc.__getitem__</code><a href="__main__.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__getitem__</code>(<strong><code>index</code></strong>:<code>int</code>)</p>
 </blockquote>
 <ol>
 <li><strong>index</strong>: The index of the token to return. </li>
@@ -403,7 +403,7 @@ UCREL Token: .	Lemma: .
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Doc.__len__" class="doc_header"><code>UCREL_Doc.__len__</code><a href="__main__.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__len__</code>()</p>
+<h4 id="UCREL_Doc.__len__" class="doc_header"><code>UCREL_Doc.__len__</code><a href="__main__.py#L58" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__len__</code>()</p>
 </blockquote>
 <p><strong>returns</strong>: The number of tokens in the Doc.</p>
 
@@ -461,7 +461,7 @@ UCREL Token: .	Lemma: .
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="UCREL_Doc.__eq__" class="doc_header"><code>UCREL_Doc.__eq__</code><a href="__main__.py#L71" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__eq__</code>(<strong><code>other</code></strong>:<code>Any</code>)</p>
+<h4 id="UCREL_Doc.__eq__" class="doc_header"><code>UCREL_Doc.__eq__</code><a href="__main__.py#L72" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.__eq__</code>(<strong><code>other</code></strong>:<code>Any</code>)</p>
 </blockquote>
 <p>Compare another instance with the current instance of this
 class.</p>
@@ -525,6 +525,174 @@ the same class type as <code>self</code>.</p>
 <pre>UCREL_Doc instances can only be compared with other UCREL_Doc instances:
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="UCREL_Doc.to_json" class="doc_header"><code>UCREL_Doc.to_json</code><a href="__main__.py#L126" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.to_json</code>()</p>
+</blockquote>
+<p><strong>returns</strong> This UCREL_Doc as a JSON String.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_doc</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;text&#34;: &#34;hello how are you. I am great thanks.&#34;, &#34;tokens&#34;: [{&#34;text&#34;: &#34;hello&#34;, &#34;lemma&#34;: null, &#34;pos_tag&#34;: &#34;UH&#34;, &#34;usas_tag&#34;: &#34;Z4&#34;, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;how&#34;, &#34;lemma&#34;: &#34;RRQ&#34;, &#34;pos_tag&#34;: &#34;Z5&#34;, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;are&#34;, &#34;lemma&#34;: &#34;VBR&#34;, &#34;pos_tag&#34;: &#34;A3+&#34;, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;you&#34;, &#34;lemma&#34;: &#34;PPY&#34;, &#34;pos_tag&#34;: &#34;Z8mf&#34;, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;.&#34;, &#34;lemma&#34;: &#34;.&#34;, &#34;pos_tag&#34;: null, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;I&#34;, &#34;lemma&#34;: &#34;PPIS1&#34;, &#34;pos_tag&#34;: &#34;Z8mf&#34;, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;am&#34;, &#34;lemma&#34;: &#34;VBM&#34;, &#34;pos_tag&#34;: &#34;A3+&#34;, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;great&#34;, &#34;lemma&#34;: &#34;JJ&#34;, &#34;pos_tag&#34;: &#34;A5.1+&#34;, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;thanks&#34;, &#34;lemma&#34;: &#34;NN2&#34;, &#34;pos_tag&#34;: &#34;S1.2.4+&#34;, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}, {&#34;text&#34;: &#34;.&#34;, &#34;lemma&#34;: &#34;.&#34;, &#34;pos_tag&#34;: null, &#34;usas_tag&#34;: null, &#34;mwe_tag&#34;: null}], &#34;sentence_indexes&#34;: [[0, 5], [5, 10]]}&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Static-Methods">Static Methods<a class="anchor-link" href="#Static-Methods"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="UCREL_Doc.from_json" class="doc_header"><code>UCREL_Doc.from_json</code><a href="__main__.py#L143" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>UCREL_Doc.from_json</code>(<strong><code>json_string</code></strong>:<code>str</code>)</p>
+</blockquote>
+<p>A static method that given a <code>json_string</code> will 
+return a <a href="/ucrel-python-api/ucrel_doc.html#UCREL_Doc"><code>UCREL_Doc</code></a> representation of that string.</p>
+<ol>
+<li><strong>json_string</strong>: A string that is the return of 
+<a href="/ucrel-python-api/ucrel_doc.html#UCREL_Doc.to_json"><code>UCREL_Doc.to_json</code></a> method</li>
+</ol>
+<p><strong>returns</strong> The given <code>json_string</code> represented through the 
+<a href="/ucrel-python-api/ucrel_doc.html#UCREL_Doc"><code>UCREL_Doc</code></a>.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_doc_json_string</span> <span class="o">=</span> <span class="n">example_doc</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+<span class="n">another_example_doc</span> <span class="o">=</span> <span class="n">UCREL_Doc</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">example_doc_json_string</span><span class="p">)</span>
+<span class="n">another_example_doc</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>UCREL Doc (2 sentences):
+First 3 tokens:
+UCREL Token: hello	POS tag: UH	USAS tag: Z4
+UCREL Token: how	Lemma: RRQ	POS tag: Z5
+UCREL Token: are	Lemma: VBR	POS tag: A3+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_doc</span> <span class="o">==</span> <span class="n">another_example_doc</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
 </div>
 
 </div>
